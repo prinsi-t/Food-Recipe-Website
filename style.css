@@ -1,0 +1,21 @@
+img{
+    width: 5em;
+
+}
+
+.foo{
+   text-align: right;
+  
+   padding-left: 0;
+   margin: 0;
+   margin: -2em 0 0 0;
+}
+header section{
+    background-color: blue;
+    height: 100px;
+}
+
+main section{
+    background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKL9Wh1GhdERYI429fkp5fkQt8xKUEsrpxGg&usqp=CAU') no-repeat center center fixed;
+    background-size: cover;
+}
