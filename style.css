@@ -1,21 +1,64 @@
-img{
-    width: 5em;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+img{
+    width: 6em;
+    margin-left: 5em;
+    margin-top: -0.7em;
+    
 }
 
 .foo{
    text-align: right;
-  
+   font-size: 30px;
    padding-left: 0;
    margin: 0;
-   margin: -2em 0 0 0;
+   margin: -2.3em 3em 0 0;
+   color: white;
 }
 header section{
-    background-color: blue;
-    height: 100px;
+    background-color: #003049;
+    height: 75px;
+  
+}
+
+main section .main{
+   
+}
+
+main section .para{
+   
+    
+}
+
+.search{
+    padding: 5px 10px;
+    font-size: 1.5em;
+}
+
+button {
+    font-size: 1.5em;
+    border: none;
+    border-radius: 1em;
+    padding: 5px 10px;
+    background-color: rgb(219, 116, 79);
+    color: white;
 }
 
 main section{
-    background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKL9Wh1GhdERYI429fkp5fkQt8xKUEsrpxGg&usqp=CAU') no-repeat center center fixed;
+    background: url('food.png') no-repeat center center fixed;
     background-size: cover;
+    /* filter: blur(2px);  */
+    height: 500px; 
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    color: #160d12;
 }
