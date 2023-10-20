@@ -25,27 +25,41 @@ header section{
   
 }
 
-main section .main{
-   
-}
 
-main section .para{
-   
+
+.main{
+   margin-top: -2em;
     
 }
 
-.search{
-    padding: 5px 10px;
-    font-size: 1.5em;
+.para{
+   margin-top: 2em;
+   font-size: 20px;
 }
 
-button {
+.para p{
+    margin-top: 1em;
+    color: #182f31;
+}
+
+.search{
+    padding: 5px 12px;
+    font-size: 1.5em;
+    border-radius: 0.5em;
+    border: 1px solid #003049;
+}
+
+.btn{
     font-size: 1.5em;
     border: none;
-    border-radius: 1em;
-    padding: 5px 10px;
+    border-radius: 1.2em;
+    padding: 8px 10px;
     background-color: rgb(219, 116, 79);
     color: white;
+}
+
+.btn:hover {
+    cursor: pointer;
 }
 
 main section{
@@ -60,5 +74,5 @@ main section{
     flex-direction: column;
     margin: 0;
     padding: 0;
-    color: #160d12;
+    color: #291821;
 }
