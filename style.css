@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-img{
+.logo{
     width: 6em;
     margin-left: 5em;
     margin-top: -0.7em;
@@ -19,21 +19,20 @@ img{
    margin: -2.3em 3em 0 0;
    color: white;
 }
+
 header section{
     background-color: #003049;
     height: 75px;
-  
+    
 }
 
-
-
 .main{
-   margin-top: -2em;
+  
     
 }
 
 .para{
-   margin-top: 2em;
+   margin-top: 1em;
    font-size: 20px;
 }
 
@@ -42,8 +41,10 @@ header section{
     color: #182f31;
 }
 
+
+
 .search{
-    padding: 5px 12px;
+    padding: 5px 15px;
     font-size: 1.5em;
     border-radius: 0.5em;
     border: 1px solid #003049;
@@ -66,8 +67,8 @@ main section{
     background: url('food.png') no-repeat center center fixed;
     background-size: cover;
     /* filter: blur(2px);  */
-    height: 500px;
-  
+    height: 600px;
+   
     display: flex;
     text-align: center;
     align-items: center;
@@ -86,8 +87,9 @@ main section{
       
         margin: 0;
     }
+
     .foo{
-        margin: -2.5em 1.5em 0 0;
+        margin: -2.3em 1.5em 0 0;
         font-size: 25px;
       
     }
@@ -99,27 +101,42 @@ main section{
     }
 
     main section {
-        float: left;
+        background-size: cover;
+        background-image: url('foods.png');
+        background-attachment: fixed;
         width: 100%;
-        background-size: contain;
-        width: 100%;
-        margin-top: -20em;
-        padding-top: -13em;
-        height: 800px;
-        margin-bottom: 0;
+        color: white;
+        margin: 0;
     }
+
     .para{
-        margin: 0;
-        margin-top: 5em;
-        padding: 0;
-        margin-bottom: 0;
         font-size: 15px;
+        color: white;
+        width: 90%;
     }
-    .main{
-        margin: 0;
-        margin-top: 5em;
-        padding-top: 5em;
-        margin-bottom: 0;
+
+    .para p{
+        color: white;
+        width: 90%;
+    }
+
+    .main form{
         font-size: 15px;
+        margin-bottom: 0;
+        padding: 0;
+        display: block;
+        padding: 0;
+        margin: 0;
+       
+    }
+
+    body{
+        padding: 0;
+        margin: 0;
+    }
+
+    html{
+        padding: 0;
+        margin: 0;
     }
 }
