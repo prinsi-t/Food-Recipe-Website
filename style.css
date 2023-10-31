@@ -67,7 +67,7 @@ main section{
     background: url('food.png') no-repeat center center fixed;
     background-size: cover;
     /* filter: blur(2px);  */
-    height: 600px;
+    height: 550px;
    
     display: flex;
     text-align: center;
