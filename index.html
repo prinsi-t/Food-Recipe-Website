@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/4377c0b254.js" crossorigin="anonymous"></script>
-    <title>Food Recipe Website</title>
+    <title>Recipes</title>
 </head>
 <body>
     <header>
-        <section>
+        <section class="header">
             <img class="logo" src="logo.png" alt="logo">
             <h2 class="foo">Food Recipe Website</h2>
         </section>
@@ -21,14 +21,14 @@
         <div class="main">
 
             <form action="">
-                <input type="text" placeholder="Search for Recipes... " class="search">
-                <button class="btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <input type="text" placeholder="Search for Recipes... " class="searchBox">
+                <button class="searchBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
         </div>
             
         <div class="para">
             <h1>Just search for any food recipe and get best results !</h1>
-            <p>This is the Food Recipe App for the best Recipes, <br> Search for your favourite dish. </p>
+            <p>"If you learn a recipe, you can cook the recipe. If you learn the technique,<br> you can cook anything." ~ Michael Symon</p>
         </div>
         
    
@@ -37,7 +37,35 @@
 
     <section>
         <div>
-            <h2>Your search results here: </h2>
+            <h2 class="res">Your search results here: </h2>
+        </div>
+    </section>
+
+    <section>
+        <div class="searchResult">
+            <div class="mealItem">
+                <img class="mealImg" src="cake.png" alt="">
+                <div>
+                    <h3 class="mealName">Pancake</h3>
+                    <a href="#" class="recipBtn">View Recipe</a>
+                </div>
+            </div>
+
+            <div class="mealItem">
+                <img class="mealImg" src="cake.png" alt="">
+                <div>
+                    <h3 class="mealName">Pancake</h3>
+                    <a href="#" class="recipBtn">View Recipe</a>
+                </div>
+            </div>
+
+            <div class="mealItem">
+                <img class="mealImg" src="cake.png" alt="">
+                <div>
+                    <h3 class="mealName">Pancake</h3>
+                    <a href="#" class="recipBtn">View Recipe</a>
+                </div>
+            </div>
         </div>
     </section>
    

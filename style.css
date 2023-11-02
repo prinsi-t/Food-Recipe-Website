@@ -4,6 +4,8 @@
     box-sizing: border-box;
 }
 
+
+
 .logo{
     width: 6em;
     margin-left: 5em;
@@ -20,20 +22,17 @@
    color: white;
 }
 
-header section{
+header .header{
     background-color: #003049;
     height: 75px;
     
 }
 
-.main{
-  
-    
-}
 
 .para{
    margin-top: 1em;
    font-size: 20px;
+   
 }
 
 .para p{
@@ -43,14 +42,14 @@ header section{
 
 
 
-.search{
+.searchBox{
     padding: 5px 15px;
     font-size: 1.5em;
     border-radius: 0.5em;
     border: 1px solid #003049;
 }
 
-.btn{
+.searchBtn{
     font-size: 1.5em;
     border: none;
     border-radius: 1.2em;
@@ -59,15 +58,15 @@ header section{
     color: white;
 }
 
-.btn:hover {
+.searchBtn:hover {
     cursor: pointer;
 }
 
 main section{
-    background: url('food.png') no-repeat center center fixed;
+    background: url('food.png') no-repeat center center;
     background-size: cover;
     /* filter: blur(2px);  */
-    height: 550px;
+    height: 450px;
    
     display: flex;
     text-align: center;
@@ -103,16 +102,17 @@ main section{
     main section {
         background-size: cover;
         background-image: url('foods.png');
-        background-attachment: fixed;
         width: 100%;
         color: white;
         margin: 0;
+        height: 500px;
     }
 
     .para{
         font-size: 15px;
         color: white;
         width: 90%;
+        font-weight: bolder;
     }
 
     .para p{
@@ -140,3 +140,72 @@ main section{
         margin: 0;
     }
 }
+
+.res{
+    margin: 2em 0 0 2em;
+    font-size: 28px;
+    border-bottom: 2px solid #db744f;
+    width: 21%;
+}
+
+.searchResult{
+    
+    width: 100%;
+   /*  display: grid;
+    grid-template: auto / repeat(auto-fit, minmax(300px, 1fr)); */
+}
+/* .searchResult, .mealItem{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+} */
+
+.mealItem{
+    width: 80%;
+    border-radius: 0.5em;
+    overflow: hidden;
+    box-shadow: 0 4px 21px -10px rgba(0, 0, 0, 0.79);
+    margin: 5em 3em;
+}
+
+.mealImg{
+    width: 100%;
+    display: block;
+
+}
+
+.mealName{
+    margin: 1em 0 0 1em;
+    font-size: 25px;
+}
+
+.recipBtn{
+    color: #fff;
+    background-color: #db744f;
+    padding: 5px;
+    display: block;
+    width: 125px;
+    margin: -1.5em 0 1em 10em;
+    border-radius: 0.5em;
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: bolder;
+}
+
+.recipBtn:hover{
+    background-color: #f07042;
+}
+
+@media screen and (min-width: 768px) {
+    .searchResult{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        
+    }
+}
+@media screen and (min-width: 992px){
+    .searchResult{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
