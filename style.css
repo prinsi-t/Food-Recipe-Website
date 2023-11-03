@@ -148,23 +148,36 @@ main section{
     width: 21%;
 }
 
-.searchResult{
-    
-    width: 100%;
-   /*  display: grid;
-    grid-template: auto / repeat(auto-fit, minmax(300px, 1fr)); */
+.recipeContainer{
+    text-align: center;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    width: 80%;
+    margin: 10px auto;
+    padding: 20px;
 }
-/* .searchResult, .mealItem{
+
+.recipe{
+    background-color: #fff;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-} */
+    flex-direction: column;
+    border-radius: 0.5em;
+    box-shadow: 0 4px 21px -10px rgba(0, 0, 0, 0.79); 
+    padding: 8px 5px;
+}
+.img{
+    width: 90%;
+    margin-left: 1em;
+}
+/* .searchResult{
+    width: 100%;
+}
 
 .mealItem{
-    width: 80%;
-    border-radius: 0.5em;
+    width: 80%;    border-radius: 0.5em;
     overflow: hidden;
-    box-shadow: 0 4px 21px -10px rgba(0, 0, 0, 0.79);
+    box-shadow: 0 4px 21px -10px rgba(0, 0, 0, 0.79); 
     margin: 5em 3em;
 }
 
@@ -208,4 +221,17 @@ main section{
         grid-template-columns: repeat(3, 1fr);
     }
 }
+
+@media all and (max-width: 600px){
+    .res{
+        width: 80%;
+        margin-left: 1em;
+    }
+    .mealItem{
+        margin: 4em 2.5em;
+    }
+    .recipBtn{
+        margin: -1.5em 0 1em 8em;
+    }
+} */
 
