@@ -15,7 +15,7 @@ const getRecipes = async (query) => {
             <img class='img' src='${meal.strMealThumb}'>
             <h3>${meal.strMeal}</h3>
             <p>${meal.strArea}</p>
-            <button>${}
+           
         `
         recipeContainer.appendChild(recipe);
         //console.log(meal);
