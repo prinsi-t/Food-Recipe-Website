@@ -1,6 +1,9 @@
 const searchBox = document.querySelector('.searchBox')
 const searchBtn = document.querySelector('.searchBtn')
 const recipeContainer = document.querySelector('.recipeContainer')
+const closeBtn = document.querySelector('.closeBtn')
+const recipeContent = document.querySelector('.recipeContent')
+
 
 const getRecipes = async (query) => {
     recipeContainer.innerHTML = '<h2>Fetching Your Recipes....</h2>';
@@ -12,15 +15,31 @@ const getRecipes = async (query) => {
         const recipe = document.createElement('div');
         recipe.classList.add('recipe');
         recipe.innerHTML = `
-            <img class='img' src='${meal.strMealThumb}'>
+            <img src='${meal.strMealThumb}'>
             <h3>${meal.strMeal}</h3>
             <p>${meal.strArea}</p>
            
         `
+        const button = document.createElement('button');
+        button.textContent = 'Recipe';
+        recipe.appendChild(button)
+
+        button.addEventListener('click', () => {
+            recipeDetails(meal)
+        })
+
         recipeContainer.appendChild(recipe);
         //console.log(meal);
     });
    
+}
+
+const recipeDetails = (meal) => {
+    recipeContent.innerHTML = `
+        <h2>${meal.strMeal}</h2>
+    `
+
+    recipeContent.parentElement.style.display = 'block';
 }
 
 searchBtn.addEventListener('click', (e) => {
