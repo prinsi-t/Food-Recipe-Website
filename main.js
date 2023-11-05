@@ -34,13 +34,39 @@ const getRecipes = async (query) => {
    
 }
 
+const fetchingIngredients = (meal) => {
+    let ingredients = '';
+    for (let i = 1; i <= 20; i++){
+        let ingredient = meal[`strIngredient${i}`];
+        if(ingredient){
+            const measure = meal[`strMeasure${i}`];
+            ingredients += `<li>${measure} ${ingredient} </li>`
+        }else{
+            break;
+        }
+    }
+    return ingredients;
+    //console.log(meal);
+}
+
 const recipeDetails = (meal) => {
     recipeContent.innerHTML = `
-        <h2>${meal.strMeal}</h2>
+        <h2 class = 'recipeName'>${meal.strMeal}</h2>
+        <h3 class = 'ingredient'>Ingredients:</h3>
+        <ul class = 'ingredientsList'>${fetchingIngredients(meal)}
+
+        <div>
+            <h3 class = 'instruction'>Instructions:</h3>
+            <p class = 'instructions'> ${meal.strInstructions}</p>
+        </div>
     `
 
     recipeContent.parentElement.style.display = 'block';
 }
+
+closeBtn.addEventListener('click', () => {
+    recipeContent.parentElement.style.display = 'none';
+})
 
 searchBtn.addEventListener('click', (e) => {
     e.preventDefault();

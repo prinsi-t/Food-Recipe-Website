@@ -82,7 +82,7 @@ main section{
 @media all and (max-width: 600px){
     header section{
         float: left;
-        width: 100%;
+        width: 95%;
       
         margin: 0;
     }
@@ -102,7 +102,7 @@ main section{
     main section {
         background-size: cover;
         background-image: url('foods.png');
-        width: 100%;
+        width: 95%;
         color: white;
         margin: 0;
         height: 500px;
@@ -133,6 +133,7 @@ main section{
     body{
         padding: 0;
         margin: 0;
+        
     }
 
     html{
@@ -150,7 +151,7 @@ main section{
 
 .recipeContainer{
     display: grid;
-    gap: 5em;
+    gap: 4em;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     width: 90%;
     margin: 3em 2em 0 5em;
@@ -165,6 +166,12 @@ main section{
     box-shadow: 0 5px 21px -10px rgba(0, 0, 0, 0.79); 
     padding: 8px 5px;
     max-width: 350px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.recipe:hover{
+    transform: scale(1.05);
 }
 
 .recipe h3{
@@ -209,60 +216,70 @@ main section{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #db744f;
+    background-color: #f07042;
     border: 1.5em;
     width: 40%;
     height: 70%;
     font-size: 20px;
-}
-/* .searchResult{
-    width: 100%;
-}
-
-.mealItem{
-    width: 80%;    border-radius: 0.5em;
-    overflow: hidden;
-    box-shadow: 0 4px 21px -10px rgba(0, 0, 0, 0.79); 
-    margin: 5em 3em;
-}
-
-.mealImg{
-    width: 100%;
-    display: block;
-
-}
-
-.mealName{
-    margin: 1em 0 0 1em;
-    font-size: 25px;
-}
-
-.recipBtn{
-    color: #fff;
-    background-color: #db744f;
-    padding: 5px;
-    display: block;
-    width: 125px;
-    margin: -1.5em 0 1em 10em;
+    overflow-y: scroll;
     border-radius: 0.5em;
-    font-size: 20px;
-    text-decoration: none;
+}
+
+.closeBtn {
+   margin-left: 37em;
+   margin-top: 1em;
+   border: none;
+   border-radius: 1em;
+   padding: 5px 8px;
+   cursor: pointer;
+}
+
+.closeBtn i{
+    font-size: 1.5em;
+    color: #000;
+   
+}
+
+.recipeName{
+    text-align: center;
+    font-size: 30px;
+    text-decoration: underline;
+}
+
+.ingredient{
+    margin-top: 1em;
     font-weight: bolder;
+    background-color: #fff;
+    width: 35%;
+    color: #f07042;
+    padding: 8px;
+    border-radius: 0.5em;
 }
 
-
-
-@media screen and (min-width: 768px) {
-    .searchResult{
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        
-    }
+.recipeContent{
+    padding: 1em 3em;
+    color: #fff;
 }
-@media screen and (min-width: 992px){
-    .searchResult{
-        grid-template-columns: repeat(3, 1fr);
-    }
+
+.ingredientsList li{
+    margin-top: 0.5em;
+    margin-left: -1em;
+}
+
+.instruction{
+    margin-top: 1em;
+    font-weight: bolder;
+    background-color: #fff;
+    width: 35%;
+    color: #f07042;
+    padding: 8px;
+    border-radius: 0.5em;
+}
+
+.instructions{
+    margin-top: 1em;
+    line-height: 30px;
+    white-space: pre-line;
 }
 
 @media all and (max-width: 600px){
@@ -270,11 +287,13 @@ main section{
         width: 80%;
         margin-left: 1em;
     }
-    .mealItem{
-        margin: 4em 2.5em;
+
+    .recipeContainer{
+       
+        margin: 2em 2em 0 0;
+        margin-right: 0;
+        padding-right: 0;
     }
-    .recipBtn{
-        margin: -1.5em 0 1em 8em;
-    }
-} */
+}
+
 
