@@ -134,7 +134,7 @@ main section{
     }
     
     .searchBox{
-        padding: 4px 13px;
+        padding: 4px 10px;
     }
 
     body{
@@ -329,9 +329,12 @@ main section{
     }
 
     .closeBtn{
-        margin-left: 20em;
+        margin-left: 18em;
     }
 
+    .recipe button{
+        margin-left: 4.5em;
+    }
    
 }
 
