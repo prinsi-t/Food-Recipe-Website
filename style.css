@@ -159,7 +159,7 @@ main section{
 .recipeContainer{
     display: grid;
     gap: 4em;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 0.5fr));
     width: 90%;
     margin: 3em 2em 0 5em;
     padding: 20px;
@@ -195,7 +195,13 @@ main section{
 
 .recipe img{
     width: 90%;
-    margin-left: 1em;
+    margin-left: 1em; 
+    
+}
+
+.recipe img:hover{
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
 }
 
 .recipe button{

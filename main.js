@@ -20,6 +20,7 @@ const getRecipes = async (query) => {
             <p>${meal.strArea}</p>
            
         `
+       
         const button = document.createElement('button');
         button.textContent = 'Recipe';
         recipe.appendChild(button)
