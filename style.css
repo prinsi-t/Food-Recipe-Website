@@ -158,11 +158,12 @@ main section{
 
 .recipeContainer{
     display: grid;
-    gap: 4em;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 0.5fr));
-    width: 90%;
-    margin: 3em 2em 0 5em;
+    gap: 2em;
+    grid-template-columns: auto auto auto auto/* repeat(auto-fit, minmax(300px, 1fr)) */;
+    width: 95%;
+    margin: 3em 2em 0 3em;
     padding: 20px;
+    grid-column: 4;
 }
 
 .recipe{
@@ -171,7 +172,6 @@ main section{
     flex-direction: column;
     border-radius: 0.5em;
     box-shadow: 0 5px 21px -10px rgba(0, 0, 0, 0.79); 
-    /* padding: 8px 5px; */
     max-width: 350px;
     cursor: pointer;
     transition: transform 0.3s ease-in-out;
@@ -180,21 +180,24 @@ main section{
    
 }
 
-/* .recipe:hover{
-    transform: scale(1.05);
-} */
+
 
 .recipe h3{
-    margin-top: -5em;
+    margin-top: -6em;
     margin-left: 1em;
     font-size: 20px;
-    overflow: hidden;
+    z-index: 1;
+
+    color: #fff;
 }
 
 .recipe p{
     margin-left: 1.2em;
     font-size: 18px;
-    color: rgb(129, 130, 132);
+    z-index: 1;
+    color: #fff;
+ 
+   
 }
 
 .recipe img{
@@ -216,7 +219,7 @@ main section{
     padding: 5px;
     display: block;
     width: 125px;
-    margin: 0 0 1em 5.5em;
+    margin: 0.5em 0 1em 5em;
     border-radius: 0.5em;
     font-size: 20px;
     text-decoration: none;
@@ -224,7 +227,7 @@ main section{
     border: none;
     cursor: pointer;
     margin-bottom: 0;
-    overflow: hidden;
+    z-index: 1;
 }
 
 .recipe button:hover{
@@ -244,6 +247,7 @@ main section{
     font-size: 20px;
     overflow-y: scroll;
     border-radius: 0.5em;
+    z-index: 1;
 }
 
 .closeBtn {
@@ -311,10 +315,10 @@ main section{
     }
 
     .recipeContainer{
-       
         margin: 2em 2em 0 0.5em;
         margin-right: 0;
         padding-right: 0;
+        grid-template-columns:  repeat(auto-fit, minmax(300px, 1fr)) ;
     }
 
     .recipeDetails{
