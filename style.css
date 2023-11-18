@@ -320,6 +320,10 @@ main section{
         grid-template-columns:  repeat(auto-fit, minmax(300px, 1fr)) ;
     }
 
+    .recipe{
+        width: 300px;
+    }
+
     .recipeDetails{
         width: 80%;
         height: 60%;
@@ -350,7 +354,7 @@ main section{
     }
 
     .recipe button{
-        margin-left: 4.5em;
+        
     }
    
 }
