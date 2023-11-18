@@ -321,6 +321,7 @@ main section{
     }
 
     .recipe{
+        margin-left: 0.5em;
         width: 300px;
     }
 
@@ -353,9 +354,7 @@ main section{
         margin-left: 18em;
     }
 
-    .recipe button{
-        
-    }
+   
    
 }
 
