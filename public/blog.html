@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog - Foodieland</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+    .font-playfair { font-family: 'Playfair Display', serif; }
+    .font-inter { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="font-inter bg-white">
+  <!-- Header/Navigation -->
+  <header class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm z-50 border-b border-gray-100">
+    <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <div class="flex items-center justify-between">
+        <a href="/" class="text-2xl font-playfair font-bold text-gray-900">
+          Foodieland<span class="text-orange-500">.</span>
+        </a>
+        <ul class="hidden md:flex items-center space-x-8 text-sm font-medium">
+          <li><a href="/" class="text-gray-600 hover:text-orange-500 transition">Home</a></li>
+          <li><a href="/recipes.html" class="text-gray-600 hover:text-orange-500 transition">Recipes</a></li>
+          <li><a href="/blog.html" class="text-orange-500 transition font-bold underline underline-offset-8 decoration-2">Blog</a></li>
+          <li><a href="/about.html" class="text-gray-600 hover:text-orange-500 transition">About us</a></li>
+          <li><a href="/contact.html" class="text-gray-600 hover:text-orange-500 transition">Contact us</a></li>
+        </ul>
+        <div class="hidden md:flex items-center space-x-4">
+          <a href="/recipes.html" class="p-2 hover:bg-gray-100 rounded-full transition">
+            <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="pt-32 pb-20">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h1 class="font-playfair text-5xl font-bold text-gray-900 mb-4">Blog & Articles</h1>
+        <p class="text-gray-600 max-w-2xl mx-auto">Latest news, cooking tips and food stories from our expert chefs.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <!-- Blog Post 1 -->
+        <article class="group cursor-pointer">
+          <div class="relative h-64 rounded-3xl overflow-hidden mb-6">
+            <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Cooking Tips">
+            <div class="absolute top-4 left-4 bg-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest text-orange-500">Tips</div>
+          </div>
+          <h2 class="font-playfair text-2xl font-bold text-gray-900 mb-3 group-hover:text-orange-500 transition">Mastering the Art of Homemade Pasta</h2>
+          <p class="text-gray-500 text-sm leading-relaxed mb-4">Learn the secrets to creating perfect al dente pasta from scratch every single time...</p>
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-gray-200"></div>
+            <span class="text-xs font-bold text-gray-900">John Doe</span>
+            <span class="text-xs text-gray-400">• Jan 15, 2026</span>
+          </div>
+        </article>
+
+        <!-- Blog Post 2 -->
+        <article class="group cursor-pointer">
+          <div class="relative h-64 rounded-3xl overflow-hidden mb-6">
+            <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Healthy Eating">
+            <div class="absolute top-4 left-4 bg-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest text-orange-500">Health</div>
+          </div>
+          <h2 class="font-playfair text-2xl font-bold text-gray-900 mb-3 group-hover:text-orange-500 transition">10 Superfoods to Boost Your Energy</h2>
+          <p class="text-gray-500 text-sm leading-relaxed mb-4">Discover which ingredients you should add to your diet for a healthier, more energetic lifestyle...</p>
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-gray-200"></div>
+            <span class="text-xs font-bold text-gray-900">Jane Smith</span>
+            <span class="text-xs text-gray-400">• Feb 02, 2026</span>
+          </div>
+        </article>
+
+        <!-- Blog Post 3 -->
+        <article class="group cursor-pointer">
+          <div class="relative h-64 rounded-3xl overflow-hidden mb-6">
+            <img src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" alt="Food Travel">
+            <div class="absolute top-4 left-4 bg-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest text-orange-500">Travel</div>
+          </div>
+          <h2 class="font-playfair text-2xl font-bold text-gray-900 mb-3 group-hover:text-orange-500 transition">The Hidden Gems of Italian Street Food</h2>
+          <p class="text-gray-500 text-sm leading-relaxed mb-4">Journey through the narrow streets of Rome and Florence to find the best local eats...</p>
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-gray-200"></div>
+            <span class="text-xs font-bold text-gray-900">Chef Mario</span>
+            <span class="text-xs text-gray-400">• Mar 10, 2026</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8 text-left">
+        <div>
+          <div class="text-2xl font-playfair font-bold mb-4">
+            Foodieland<span class="text-orange-500">.</span>
+          </div>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            Making cooking accessible and enjoyable for everyone.
+          </p>
+        </div>
+        <div>
+          <h3 class="font-bold mb-4">Quick Links</h3>
+          <ul class="space-y-2 text-sm text-gray-400">
+            <li><a href="/" class="hover:text-orange-500 transition">Home</a></li>
+            <li><a href="/recipes.html" class="hover:text-orange-500 transition">Recipes</a></li>
+            <li><a href="/blog.html" class="hover:text-orange-500 transition">Blog</a></li>
+            <li><a href="/about.html" class="hover:text-orange-500 transition">About</a></li>
+            <li><a href="/contact.html" class="hover:text-orange-500 transition">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-bold mb-4">Categories</h3>
+          <ul class="space-y-2 text-sm text-gray-400">
+            <li><a href="#" class="hover:text-orange-500 transition">Breakfast</a></li>
+            <li><a href="#" class="hover:text-orange-500 transition">Lunch</a></li>
+            <li><a href="#" class="hover:text-orange-500 transition">Dinner</a></li>
+            <li><a href="#" class="hover:text-orange-500 transition">Desserts</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-bold mb-4">Newsletter</h3>
+          <p class="text-gray-400 text-sm mb-4">Get weekly recipes in your inbox</p>
+          <div class="flex gap-2">
+            <input type="email" placeholder="Your email" class="flex-1 px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 focus:outline-none focus:border-orange-500 text-sm">
+            <button class="bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-lg transition">→</button>
+          </div>
+        </div>
+      </div>
+      <div class="pt-8 border-t border-gray-800 text-center text-sm text-gray-400">
+        <p>&copy; 2026 Foodieland. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

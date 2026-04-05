@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adventure of Deliciousness</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+    
+    .font-playfair {
+      font-family: 'Playfair Display', serif;
+    }
+    
+    .font-inter {
+      font-family: 'Inter', sans-serif;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .animate-float-delay {
+      animation: float 6s ease-in-out 2s infinite;
+    }
+  </style>
+</head>
+<body class="font-inter bg-white">
+
+  <!-- Header/Navigation -->
+  <header class="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm z-50 border-b border-gray-100">
+    <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
+      <div class="flex items-center justify-between">
+        <a href="/" class="text-2xl font-playfair font-bold text-gray-900">
+          Foodieland<span class="text-orange-500">.</span>
+        </a>
+        
+        <!-- Desktop Menu -->
+        <ul class="hidden md:flex items-center space-x-8 text-sm font-medium">
+          <li><a href="/" class="text-orange-500 transition font-bold underline underline-offset-8 decoration-2">Home</a></li>
+          <li><a href="/recipes.html" class="text-gray-600 hover:text-orange-500 transition">Recipes</a></li>
+          <li><a href="/blog.html" class="text-gray-600 hover:text-orange-500 transition">Blog</a></li>
+          <li><a href="/about.html" class="text-gray-600 hover:text-orange-500 transition">About us</a></li>
+          <li><a href="/contact.html" class="text-gray-600 hover:text-orange-500 transition">Contact us</a></li>
+        </ul>
+
+        <div class="hidden md:flex items-center space-x-4">
+          <a href="/recipes.html" class="p-2 hover:bg-gray-100 rounded-full transition">
+            <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button class="md:hidden p-2">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative pt-24 pb-12 md:pt-32 md:pb-20 overflow-hidden">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        
+        <!-- Left Content -->
+        <div class="relative z-10 order-2 lg:order-1">
+          <!-- Badge -->
+          <div class="inline-flex items-center bg-white rounded-full px-4 py-2 shadow-sm border border-gray-100 mb-6">
+            <div class="w-2 h-2 bg-red-500 rounded-full mr-2"></div>
+            <span class="text-sm font-semibold text-gray-700">Hot Recipes</span>
+          </div>
+
+          <!-- Heading -->
+          <h1 class="font-playfair text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 leading-tight mb-6">
+            Adventure of
+            <span class="text-orange-500">Deliciousness</span>
+          </h1>
+
+          <p class="text-gray-600 text-base sm:text-lg leading-relaxed mb-8 max-w-xl">
+            Discover amazing recipes from around the world. From quick weeknight dinners to impressive weekend projects, we've got something for everyone.
+          </p>
+
+          <!-- CTA Buttons -->
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="/recipes.html" class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-xl font-semibold shadow-lg shadow-orange-500/30 transition-all duration-300 hover:shadow-xl hover:shadow-orange-500/40 hover:-translate-y-0.5 text-center">
+              Explore Recipes
+            </a>
+            <button class="bg-white hover:bg-gray-50 text-gray-900 px-8 py-4 rounded-xl font-semibold border-2 border-gray-200 transition-all duration-300 hover:border-orange-500 hover:-translate-y-0.5">
+              Watch Video
+            </button>
+          </div>
+
+          <!-- Stats -->
+          <div class="grid grid-cols-3 gap-4 mt-12 pt-12 border-t border-gray-100">
+            <div>
+              <div class="text-2xl sm:text-3xl font-bold text-gray-900">1000+</div>
+              <div class="text-sm text-gray-600 mt-1">Recipes</div>
+            </div>
+            <div>
+              <div class="text-2xl sm:text-3xl font-bold text-gray-900">500K+</div>
+              <div class="text-sm text-gray-600 mt-1">Home Cooks</div>
+            </div>
+            <div>
+              <div class="text-2xl sm:text-3xl font-bold text-gray-900">100+</div>
+              <div class="text-sm text-gray-600 mt-1">Countries</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Image -->
+        <div class="relative order-1 lg:order-2">
+          <!-- Decorative Elements -->
+          <div class="absolute -top-4 -right-4 w-24 h-24 bg-orange-400 rounded-full opacity-20 animate-float"></div>
+          <div class="absolute top-1/4 -left-8 w-16 h-16 bg-yellow-400 rounded-full opacity-20 animate-float-delay"></div>
+          
+          <!-- Main Image Container -->
+          <div class="relative bg-orange-50 rounded-3xl overflow-hidden shadow-2xl">
+            <div class="aspect-square relative">
+              <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=1000&q=80" class="w-full h-full object-cover" alt="Delicious Healthy Bowl">
+            </div>
+
+            <!-- Floating Recipe Card -->
+            <div class="absolute bottom-8 right-8 bg-white rounded-2xl p-4 shadow-xl max-w-[200px] animate-float-delay">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-12 h-12 bg-gradient-to-br from-orange-400 to-red-500 rounded-lg flex items-center justify-center text-white font-bold">
+                  🍜
+                </div>
+                <div>
+                  <div class="font-semibold text-sm text-gray-900">Thai Curry</div>
+                  <div class="text-xs text-gray-500">30 min</div>
+                </div>
+              </div>
+              <div class="flex items-center gap-2">
+                <div class="flex -space-x-2">
+                  <div class="w-6 h-6 rounded-full bg-blue-500 border-2 border-white"></div>
+                  <div class="w-6 h-6 rounded-full bg-green-500 border-2 border-white"></div>
+                  <div class="w-6 h-6 rounded-full bg-purple-500 border-2 border-white"></div>
+                </div>
+                <span class="text-xs text-gray-600">2.5K tried</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="py-16 md:py-24 bg-gray-50">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        
+        <!-- Feature 1 -->
+        <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300">
+          <div class="w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Step-by-Step</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Easy to follow instructions with detailed photos for every step of your cooking journey.
+          </p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300">
+          <div class="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Tested Recipes</h3>
+          <p class="text-gray-600 leading-relaxed">
+            All recipes are tested multiple times to ensure perfect results every single time.
+          </p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300">
+          <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+            <svg class="w-7 h-7 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Quick & Easy</h3>
+          <p class="text-gray-600 leading-relaxed">
+            Find recipes that fit your schedule, from 15-minute meals to weekend projects.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section class="py-16 md:py-24">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        
+        <!-- Left Content -->
+        <div class="bg-gradient-to-br from-orange-400 to-orange-500 rounded-3xl p-8 sm:p-12 text-white relative overflow-hidden">
+          <div class="relative z-10">
+            <div class="text-sm font-semibold uppercase tracking-wider mb-4 opacity-90">Join Our Community</div>
+            <h2 class="font-playfair text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+              Become a true Chef with our recipes
+            </h2>
+            <p class="text-white/90 text-lg mb-8 leading-relaxed">
+              Get access to exclusive recipes, cooking tips, and join thousands of home cooks worldwide.
+            </p>
+            <a href="/recipes.html" class="bg-white text-orange-500 hover:bg-gray-50 px-8 py-4 rounded-xl font-bold shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-0.5 inline-block">
+              Discover Now
+            </a>
+          </div>
+          
+          <!-- Decorative circles -->
+          <div class="absolute -top-20 -right-20 w-64 h-64 bg-white/10 rounded-full"></div>
+          <div class="absolute -bottom-16 -left-16 w-48 h-48 bg-white/10 rounded-full"></div>
+        </div>
+
+        <!-- Right Images Grid -->
+        <div class="grid grid-cols-2 gap-4">
+          <div class="space-y-4">
+            <div class="aspect-square bg-gray-100 rounded-2xl overflow-hidden shadow-lg">
+              <img src="https://images.unsplash.com/photo-1583394293214-28ded15ee548?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover" alt="Chef">
+            </div>
+            <div class="aspect-[4/3] bg-gray-100 rounded-2xl overflow-hidden shadow-lg">
+              <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover" alt="Salad">
+            </div>
+          </div>
+          <div class="space-y-4 pt-8">
+            <div class="aspect-[4/3] bg-gray-100 rounded-2xl overflow-hidden shadow-lg">
+              <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover" alt="Pizza">
+            </div>
+            <div class="aspect-square bg-gray-100 rounded-2xl overflow-hidden shadow-lg">
+              <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover" alt="Cake">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+        
+        <div>
+          <div class="text-2xl font-playfair font-bold mb-4">
+            Foodieland<span class="text-orange-500">.</span>
+          </div>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            Making cooking accessible and enjoyable for everyone.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-bold mb-4">Quick Links</h3>
+          <ul class="space-y-2 text-sm text-gray-400">
+            <li><a href="/" class="hover:text-orange-500 transition">Home</a></li>
+            <li><a href="/recipes.html" class="hover:text-orange-500 transition">Recipes</a></li>
+            <li><a href="/blog.html" class="hover:text-orange-500 transition">Blog</a></li>
+            <li><a href="/about.html" class="hover:text-orange-500 transition">About</a></li>
+            <li><a href="/contact.html" class="hover:text-orange-500 transition">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-bold mb-4">Categories</h3>
+          <ul class="space-y-2 text-sm text-gray-400">
+            <li><a href="#" class="hover:text-orange-500 transition">Breakfast</a></li>
+            <li><a href="#" class="hover:text-orange-500 transition">Lunch</a></li>
+            <li><a href="#" class="hover:text-orange-500 transition">Dinner</a></li>
+            <li><a href="#" class="hover:text-orange-500 transition">Desserts</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-bold mb-4">Newsletter</h3>
+          <p class="text-gray-400 text-sm mb-4">Get weekly recipes in your inbox</p>
+          <div class="flex gap-2">
+            <input 
+              type="email" 
+              placeholder="Your email" 
+              class="flex-1 px-4 py-2 rounded-lg bg-gray-800 border border-gray-700 focus:outline-none focus:border-orange-500 text-sm"
+            />
+            <button class="bg-orange-500 hover:bg-orange-600 px-4 py-2 rounded-lg transition">
+              →
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pt-8 border-t border-gray-800 text-center text-sm text-gray-400">
+        <p>&copy; 2026 Foodieland. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
