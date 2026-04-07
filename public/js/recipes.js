@@ -6,9 +6,11 @@ const resultsCount = document.querySelector('.results-count');
 const recipeDetailsModal = document.querySelector('.recipeDetails');
 const recipeContent = document.querySelector('.recipeContent');
 const closeBtn = document.querySelector('.closeBtn');
+const OPEN_RECIPE_STORAGE_KEY = 'openRecipeId';
 
 const searchToggle = document.querySelector('.search-toggle');
 const categoryPills = document.querySelectorAll('.category-pill');
+let currentMeals = [];
 
 // Category Pill Functionality
 categoryPills.forEach(pill => {
@@ -32,16 +34,18 @@ if (searchToggle) {
 }
 
 // Load recipes based on URL parameter or default
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', async () => {
     const urlParams = new URLSearchParams(window.location.search);
     const query = urlParams.get('s');
     
     if (query) {
         searchInput.value = query;
-        getRecipes(query);
+        await getRecipes(query);
     } else {
-        getRecipes('all'); // Fetch all or popular
+        await getRecipes('all'); // Fetch all or popular
     }
+
+    restoreOpenRecipe();
 });
 
 const getRecipes = async (query) => {
@@ -64,6 +68,7 @@ const getRecipes = async (query) => {
         recipeContainer.innerHTML = '';
         
         if (!data.meals || data.meals.length === 0) {
+            currentMeals = [];
             resultsCount.textContent = '0 recipes found';
             recipeContainer.innerHTML = `
                 <div class="col-span-full py-20 text-center">
@@ -77,6 +82,7 @@ const getRecipes = async (query) => {
             return;
         }
 
+        currentMeals = data.meals;
         resultsCount.textContent = `${data.meals.length} recipes found`;
         resultsTitle.textContent = query === 'all' ? 'All Recipes' : `Search Results for "${query}"`;
 
@@ -131,12 +137,12 @@ const fetchingIngredients = (meal) => {
         if (ingredient) {
             const measure = meal[`strMeasure${i}`];
             ingredients += `
-                <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-2xl border border-gray-100 group hover:border-orange-200 transition-colors">
-                    <div class="w-8 h-8 bg-white rounded-xl flex items-center justify-center text-orange-500 shadow-sm group-hover:bg-orange-500 group-hover:text-white transition-all">
+                <div class="flex items-center gap-3 p-3.5 bg-gray-50 rounded-2xl border border-gray-100 group hover:border-orange-200 transition-colors">
+                    <div class="w-7 h-7 bg-white rounded-lg flex items-center justify-center text-orange-500 shadow-sm group-hover:bg-orange-500 group-hover:text-white transition-all">
                         <i class="fa-solid fa-check text-[10px]"></i>
                     </div>
-                    <span class="text-gray-900 font-bold text-sm">
-                        <span class="text-orange-500">${measure}</span> ${ingredient}
+                    <span class="text-gray-800 font-semibold text-sm leading-snug">
+                        <span class="text-orange-500 font-bold">${measure}</span> ${ingredient}
                     </span>
                 </div>`;
         } else {
@@ -150,61 +156,69 @@ const showRecipeDetails = (meal) => {
     let ingredientsList = '';
     if (meal.ingredients && Array.isArray(meal.ingredients)) {
         ingredientsList = meal.ingredients.map(ing => `
-            <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-2xl border border-gray-100 group hover:border-orange-200 transition-colors">
-                <div class="w-8 h-8 bg-white rounded-xl flex items-center justify-center text-orange-500 shadow-sm group-hover:bg-orange-500 group-hover:text-white transition-all">
+            <div class="flex items-center gap-3 p-3.5 bg-gray-50 rounded-2xl border border-gray-100 group hover:border-orange-200 transition-colors">
+                <div class="w-7 h-7 bg-white rounded-lg flex items-center justify-center text-orange-500 shadow-sm group-hover:bg-orange-500 group-hover:text-white transition-all">
                     <i class="fa-solid fa-check text-[10px]"></i>
                 </div>
-                <span class="text-gray-900 font-bold text-sm">${ing}</span>
+                <span class="text-gray-800 font-semibold text-sm leading-snug">${ing}</span>
             </div>`).join('');
     } else {
         ingredientsList = fetchingIngredients(meal);
     }
 
     recipeContent.innerHTML = `
-        <div class="grid grid-cols-1 lg:grid-cols-2">
-            <div class="relative h-[400px] lg:h-full min-h-[500px] bg-gray-100">
+        <div class="flex flex-col lg:flex-row bg-white rounded-[40px] overflow-hidden shadow-2xl relative lg:max-h-[85vh]">
+            <!-- Left Side: Full Height Image -->
+            <div class="lg:w-[42%] relative h-[220px] sm:h-[280px] lg:h-auto lg:max-h-[85vh]">
                 <img src="${meal.strMealThumb}" 
-                    class="w-full h-full object-cover"
+                    class="w-full h-full object-cover object-center"
                     onerror="this.src='https://images.unsplash.com/photo-1495195129352-aed325a55b65?auto=format&fit=crop&w=1200&q=80'; this.onerror=null;">
-                <div class="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent"></div>
-                <div class="absolute bottom-12 left-12 right-12">
-                    <span class="bg-orange-500 text-white text-[10px] font-black uppercase tracking-[0.3em] px-4 py-2 rounded-full mb-4 inline-block shadow-xl">
-                        ${meal.strCategory || 'Main Course'}
-                    </span>
-                    <h2 class="text-5xl lg:text-7xl font-black text-white leading-none tracking-tight">${meal.strMeal}</h2>
-                </div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-black/5 to-transparent"></div>
             </div>
             
-            <div class="p-12 lg:p-20 bg-white">
-                <div class="mb-12">
-                    <h3 class="text-[10px] font-black uppercase tracking-[0.4em] text-gray-400 mb-6 flex items-center gap-4">
-                        <span class="w-8 h-[2px] bg-orange-500"></span>
+            <!-- Right Side: Content -->
+            <div class="lg:w-[58%] p-6 sm:p-8 lg:p-10 bg-white relative overflow-y-auto lg:max-h-[85vh]">
+                <div class="mb-8">
+                    <span class="bg-orange-100 text-orange-600 text-[10px] font-extrabold uppercase tracking-[0.24em] px-3 py-1.5 rounded-full mb-3 inline-block">
+                        ${meal.strCategory || 'Main Course'}
+                    </span>
+                    <h2 class="text-3xl lg:text-[2.2rem] font-extrabold text-gray-900 leading-tight mb-2">${meal.strMeal}</h2>
+                    <p class="text-gray-500 text-xs sm:text-sm font-semibold uppercase tracking-[0.18em] flex items-center gap-2">
+                        <i class="fa-solid fa-globe"></i> ${meal.strArea || 'International'} Cuisine
+                    </p>
+                </div>
+
+                <!-- Ingredients Section -->
+                <div class="mb-8">
+                    <h3 class="text-[10px] font-extrabold uppercase tracking-[0.34em] text-gray-400 mb-5 flex items-center gap-4">
+                        <span class="w-10 h-[2px] bg-orange-500"></span>
                         Ingredients
                     </h3>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                         ${ingredientsList}
                     </div>
                 </div>
                 
-                <div class="mb-12">
-                    <h3 class="text-[10px] font-black uppercase tracking-[0.4em] text-gray-400 mb-6 flex items-center gap-4">
-                        <span class="w-8 h-[2px] bg-orange-500"></span>
+                <!-- Instructions Section -->
+                <div class="mb-8">
+                    <h3 class="text-[10px] font-extrabold uppercase tracking-[0.34em] text-gray-400 mb-5 flex items-center gap-4">
+                        <span class="w-10 h-[2px] bg-orange-500"></span>
                         Instructions
                     </h3>
-                    <div class="text-gray-500 font-medium leading-relaxed space-y-6">
-                        ${meal.strInstructions ? meal.strInstructions.split('\r\n').filter(p => p.trim()).map(p => `<p>${p}</p>`).join('') : 'No instructions available.'}
+                    <div class="text-gray-600 text-[15px] font-normal leading-7 space-y-3 pr-2">
+                        ${meal.strInstructions ? meal.strInstructions.split(/\r?\n/).filter(p => p.trim()).map(p => `<p class="mb-3">${p.trim()}</p>`).join('') : 'No instructions available.'}
                     </div>
                 </div>
 
                 ${meal.strYoutube ? `
                     <div class="pt-8 border-t border-gray-100">
                         <a href="${meal.strYoutube}" target="_blank" class="inline-flex items-center gap-4 group">
-                            <div class="w-16 h-16 bg-red-600 text-white rounded-[20px] flex items-center justify-center shadow-xl shadow-red-200 group-hover:scale-110 transition-transform">
-                                <i class="fa-brands fa-youtube text-2xl"></i>
+                            <div class="w-12 h-12 bg-red-600 text-white rounded-[15px] flex items-center justify-center shadow-xl shadow-red-100 group-hover:scale-110 transition-transform">
+                                <i class="fa-brands fa-youtube text-xl"></i>
                             </div>
                             <div>
-                                <h4 class="font-black text-gray-900 uppercase tracking-widest text-sm mb-1">Watch Tutorial</h4>
-                                <p class="text-gray-400 text-xs font-bold uppercase tracking-widest">On YouTube Channel</p>
+                                <h4 class="font-black text-gray-900 uppercase tracking-widest text-xs mb-1">Watch Tutorial</h4>
+                                <p class="text-gray-400 text-[10px] font-bold uppercase tracking-widest">On YouTube Channel</p>
                             </div>
                         </a>
                     </div>
@@ -215,17 +229,34 @@ const showRecipeDetails = (meal) => {
 
     recipeDetailsModal.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
+    if (meal.idMeal) {
+        sessionStorage.setItem(OPEN_RECIPE_STORAGE_KEY, meal.idMeal);
+    }
 }
 
-closeBtn.addEventListener('click', () => {
+const closeRecipeModal = () => {
     recipeDetailsModal.classList.add('hidden');
     document.body.style.overflow = 'auto';
-});
+    sessionStorage.removeItem(OPEN_RECIPE_STORAGE_KEY);
+};
+
+const restoreOpenRecipe = () => {
+    const openRecipeId = sessionStorage.getItem(OPEN_RECIPE_STORAGE_KEY);
+    if (!openRecipeId || !currentMeals.length) return;
+
+    const mealToRestore = currentMeals.find(meal => meal.idMeal === openRecipeId);
+    if (mealToRestore) {
+        showRecipeDetails(mealToRestore);
+    } else {
+        sessionStorage.removeItem(OPEN_RECIPE_STORAGE_KEY);
+    }
+};
+
+closeBtn.addEventListener('click', closeRecipeModal);
 
 recipeDetailsModal.addEventListener('click', (e) => {
     if (e.target === recipeDetailsModal) {
-        recipeDetailsModal.classList.add('hidden');
-        document.body.style.overflow = 'auto';
+        closeRecipeModal();
     }
 });
 

@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us - Foodieland</title>
+  <link rel="icon" type="image/png" href="/img/favicon.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
@@ -33,6 +34,22 @@
             </svg>
           </a>
         </div>
+        <button class="md:hidden p-2 mobile-menu-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div class="mobile-menu hidden md:hidden mt-3 pb-4 border-t border-gray-100 pt-4">
+        <ul class="space-y-2 text-sm font-medium">
+          <li><a href="/" class="block py-2 text-gray-700 hover:text-orange-500 transition">Home</a></li>
+          <li><a href="/recipes.html" class="block py-2 text-gray-700 hover:text-orange-500 transition">Recipes</a></li>
+          <li><a href="/blog.html" class="block py-2 text-gray-700 hover:text-orange-500 transition">Blog</a></li>
+          <li><a href="/about.html" class="block py-2 text-orange-500 font-bold">About us</a></li>
+          <li><a href="/contact.html" class="block py-2 text-gray-700 hover:text-orange-500 transition">Contact us</a></li>
+        </ul>
       </div>
     </nav>
   </header>
@@ -110,5 +127,31 @@
       </div>
     </div>
   </footer>
+  <script>
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu');
+
+    if (mobileMenuToggle && mobileMenu) {
+      mobileMenuToggle.addEventListener('click', () => {
+        const isHidden = mobileMenu.classList.contains('hidden');
+        mobileMenu.classList.toggle('hidden');
+        mobileMenuToggle.setAttribute('aria-expanded', String(isHidden));
+      });
+
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          mobileMenuToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      document.addEventListener('click', (event) => {
+        if (!mobileMenu.contains(event.target) && !mobileMenuToggle.contains(event.target)) {
+          mobileMenu.classList.add('hidden');
+          mobileMenuToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+  </script>
 </body>
 </html>
