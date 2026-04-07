@@ -5,12 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us - Foodieland</title>
   <link rel="icon" type="image/png" href="/img/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            playfair: ['"Playfair Display"', 'serif'],
+            inter: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
-    .font-playfair { font-family: 'Playfair Display', serif; }
-    .font-inter { font-family: 'Inter', sans-serif; }
-  </style>
 </head>
 <body class="font-inter bg-white">
   <!-- Header/Navigation -->
@@ -74,7 +84,7 @@
           </div>
         </div>
         <div class="relative">
-          <img src="https://images.unsplash.com/photo-1577214195070-36266b7b5183?auto=format&fit=crop&w=1000&q=80" class="rounded-[40px] shadow-2xl" alt="Chef Cooking">
+          <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=1000&q=80" class="w-full h-auto rounded-[40px] shadow-2xl object-cover" alt="Chef Cooking" onerror="this.onerror=null;this.src='https://picsum.photos/1000/700?kitchen';">
           <div class="absolute -bottom-8 -left-8 bg-orange-500 text-white p-8 rounded-3xl shadow-xl hidden md:block">
             <div class="text-2xl font-bold mb-1 italic">"Cooking is love made visible."</div>
             <div class="text-sm opacity-80">— Foodieland Team</div>

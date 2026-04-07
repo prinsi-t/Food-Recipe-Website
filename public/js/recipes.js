@@ -106,7 +106,7 @@ const getRecipes = async (query) => {
                         <i class="fa-solid fa-utensils"></i>
                         <span>${meal.strCategory || 'Recipe'}</span>
                     </div>
-                    <h3 class="text-lg font-bold text-gray-900 group-hover:text-orange-500 transition-colors line-clamp-2 mb-4 leading-tight">
+                    <h3 class="text-lg font-bold text-gray-900 group-hover:text-orange-500 transition-colors mb-4 leading-tight [display:-webkit-box] [-webkit-line-clamp:2] [-webkit-box-orient:vertical] overflow-hidden">
                         ${meal.strMeal}
                     </h3>
                     <div class="flex items-center justify-between pt-4 border-t border-gray-50">
