@@ -164,7 +164,10 @@ app.post('/api/recipes/add', async (req, res) => {
             return res.status(503).json({ message: 'Database not connected' });
         }
 
-        const { name, area, category, ingredients, instructions, image, youtube, source } = req.body;
+        const { name, area, category, ingredients, instructions, youtube, source } = req.body;
+        
+        // Handle both image and strMealThumb for compatibility
+        const image = req.body.image || req.body.strMealThumb;
         
         // Generate a random idMeal if not provided (like a custom recipe)
         const idMeal = req.body.idMeal || 'custom_' + Date.now();
@@ -192,3 +195,5 @@ app.post('/api/recipes/add', async (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
+
+module.exports = app;

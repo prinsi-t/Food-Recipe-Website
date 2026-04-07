@@ -25,7 +25,7 @@ const sampleRecipes = [
         category: 'Main',
         ingredients: ['2 cups Flour', '1 tsp Yeast', '1/2 cup Tomato Sauce', '1 cup Mozzarella', 'Fresh Basil'],
         instructions: '1. Mix flour and yeast with warm water. 2. Knead the dough for 10 minutes. 3. Let it rise for 1 hour. 4. Roll out the dough. 5. Add tomato sauce and toppings. 6. Bake at 450°F for 15 minutes until golden.',
-        image: 'https://www.themealdb.com/images/media/meals/x0lk911587671540.jpg'
+        image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1000&q=80'
     },
     {
         idMeal: 'manual_002',
@@ -34,7 +34,7 @@ const sampleRecipes = [
         category: 'Side',
         ingredients: ['Lettuce', 'Tomato', 'Cucumber', '2 tbsp Olive Oil', '1 tbsp Lemon Juice', 'Salt', 'Black Pepper'],
         instructions: '1. Wash and chop all vegetables. 2. Mix in a large bowl. 3. Drizzle with olive oil and lemon juice. 4. Season with salt and pepper. 5. Toss well and serve immediately.',
-        image: 'https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg'
+        image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1000&q=80'
     },
     {
         idMeal: 'manual_003',
@@ -43,7 +43,7 @@ const sampleRecipes = [
         category: 'Main',
         ingredients: ['500g Chicken', '2 Onions', '3 Tomatoes', '1 tbsp Curry Powder', '1 cup Coconut Milk', '2 cloves Garlic', '1 inch Ginger'],
         instructions: '1. Sauté chopped onions until golden. 2. Add minced garlic and ginger. 3. Add chicken pieces and brown them. 4. Add curry powder and mix well. 5. Add chopped tomatoes and cook until soft. 6. Pour in coconut milk and simmer for 20 minutes.',
-        image: 'https://www.themealdb.com/images/media/meals/1529444113.jpg'
+        image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=1000&q=80'
     },
     {
         idMeal: 'manual_004',

@@ -49,8 +49,10 @@ const getRecipes = async (query) => {
                         "Cooking has <br> never been <br> this easy!"
                     </h3>
                     <div class="mt-auto flex items-center gap-3">
-                        <div class="w-12 h-12 rounded-full border-2 border-white/50 overflow-hidden">
-                            <img src="${meal.strMealThumb}" class="w-full h-full object-cover">
+                        <div class="w-12 h-12 rounded-full border-2 border-white/50 overflow-hidden bg-white/10">
+                            <img src="${meal.strMealThumb}" 
+                                class="w-full h-full object-cover"
+                                onerror="this.src='https://images.unsplash.com/photo-1495195129352-aed325a55b65?auto=format&fit=crop&w=100&q=80'; this.onerror=null;">
                         </div>
                         <span class="text-white font-bold text-sm uppercase tracking-widest">Learn From ${meal.strArea}</span>
                     </div>
@@ -58,7 +60,9 @@ const getRecipes = async (query) => {
             } else {
                 recipeDiv.classList.add('bg-gray-100');
                 recipeDiv.innerHTML = `
-                    <img src="${meal.strMealThumb}" alt="${meal.strMeal}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <img src="${meal.strMealThumb}" alt="${meal.strMeal}" 
+                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                        onerror="this.src='https://images.unsplash.com/photo-1495195129352-aed325a55b65?auto=format&fit=crop&w=800&q=80'; this.onerror=null;">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8">
                         <div class="absolute top-8 right-8 w-10 h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity">
                             <i class="fa-solid fa-plus"></i>

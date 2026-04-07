@@ -85,8 +85,10 @@ const getRecipes = async (query) => {
             recipeDiv.classList.add('group', 'bg-white', 'rounded-3xl', 'overflow-hidden', 'shadow-sm', 'hover:shadow-xl', 'transition-all', 'duration-500', 'cursor-pointer', 'border', 'border-gray-100');
             
             recipeDiv.innerHTML = `
-                <div class="relative h-48 overflow-hidden">
-                    <img src="${meal.strMealThumb}" alt="${meal.strMeal}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                <div class="relative h-48 overflow-hidden bg-gray-100">
+                    <img src="${meal.strMealThumb}" alt="${meal.strMeal}" 
+                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                        onerror="this.src='https://images.unsplash.com/photo-1495195129352-aed325a55b65?auto=format&fit=crop&w=800&q=80'; this.onerror=null;">
                     <div class="absolute top-4 right-4">
                         <span class="bg-white/90 backdrop-blur-sm text-gray-900 text-[10px] font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">
                             ${meal.strArea || 'International'}
@@ -160,8 +162,10 @@ const showRecipeDetails = (meal) => {
 
     recipeContent.innerHTML = `
         <div class="grid grid-cols-1 lg:grid-cols-2">
-            <div class="relative h-[400px] lg:h-full min-h-[500px]">
-                <img src="${meal.strMealThumb}" class="w-full h-full object-cover">
+            <div class="relative h-[400px] lg:h-full min-h-[500px] bg-gray-100">
+                <img src="${meal.strMealThumb}" 
+                    class="w-full h-full object-cover"
+                    onerror="this.src='https://images.unsplash.com/photo-1495195129352-aed325a55b65?auto=format&fit=crop&w=1200&q=80'; this.onerror=null;">
                 <div class="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent"></div>
                 <div class="absolute bottom-12 left-12 right-12">
                     <span class="bg-orange-500 text-white text-[10px] font-black uppercase tracking-[0.3em] px-4 py-2 rounded-full mb-4 inline-block shadow-xl">
