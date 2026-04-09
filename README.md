@@ -7,7 +7,8 @@ A simple and responsive recipe web app where users can explore different recipes
 - Browse all recipes in one place  
 - View ingredients for each recipe  
 - Step-by-step cooking instructions  
-- Clean and responsive UI  
+- Recipes fetched from external API + stored in MongoDB  
+- Combination of dynamic API data and custom database recipes  
 
 ## 🛠️ Tech Stack
 
