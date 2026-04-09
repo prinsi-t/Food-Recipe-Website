@@ -142,7 +142,7 @@ const fetchingIngredients = (meal) => {
                         <i class="fa-solid fa-check text-[10px]"></i>
                     </div>
                     <span class="text-gray-800 font-semibold text-sm leading-snug">
-                        <span class="text-orange-500 font-bold">${measure}</span> ${ingredient}
+                        <span class="font-semibold">${measure}</span> ${ingredient}
                     </span>
                 </div>`;
         } else {
@@ -150,6 +150,92 @@ const fetchingIngredients = (meal) => {
         }
     }
     return ingredients;
+}
+
+const formatInstructions = (rawInstructions) => {
+    if (!rawInstructions) return '<p class="mb-3">No instructions available.</p>';
+
+    const lines = rawInstructions
+        // Some APIs return "1. ... 2. ... 3. ..." in one long line.
+        // Split before each inline numbered marker so every step can render on its own line.
+        .replace(/\s+(?=(?:step\s*)?\d+[.):]\s+)/gi, '\n')
+        .split(/\r?\n/)
+        .map(line => line.trim())
+        .filter(Boolean);
+
+    const stepTexts = [];
+    let pendingHasNumber = false;
+
+    for (let i = 0; i < lines.length; i++) {
+        const current = lines[i];
+        const justNumber = current.match(/^(\d+)[.)]?$/);
+        const inlineNumbered = current.match(/^(\d+)[.)]\s*(.+)$/);
+        const inlineStepWord = current.match(/^step\s*(\d+)\s*[:.)-]?\s*(.*)$/i);
+
+        if (inlineNumbered) {
+            pendingHasNumber = false;
+            stepTexts.push(inlineNumbered[2].trim());
+            continue;
+        }
+
+        if (inlineStepWord) {
+            const stepText = (inlineStepWord[2] || '').trim();
+            if (stepText) {
+                pendingHasNumber = false;
+                stepTexts.push(stepText);
+            } else {
+                // "Step 1" with text on next line
+                pendingHasNumber = true;
+            }
+            continue;
+        }
+
+        if (justNumber) {
+            pendingHasNumber = true;
+            continue;
+        }
+
+        if (pendingHasNumber && stepTexts.length > 0) {
+            // If the previous line already started a step, attach as continuation.
+            const lastIndex = stepTexts.length - 1;
+            stepTexts[lastIndex] = `${stepTexts[lastIndex]} ${current}`.trim();
+            continue;
+        }
+
+        if (pendingHasNumber) {
+            stepTexts.push(current);
+            pendingHasNumber = false;
+            continue;
+        }
+
+        stepTexts.push(current);
+    }
+
+    // Remove any accidental leftover number prefixes from text, then render in clean order.
+    const normalizedSteps = stepTexts
+        .map(text => text
+            .replace(/^(?:step\s*)?\d+\s*[.):-]?\s*/i, '')
+            .replace(/:\s*$/, '')
+            .trim()
+        )
+        .filter(Boolean);
+
+    if (!normalizedSteps.length) {
+        return '<p class="mb-3">No instructions available.</p>';
+    }
+
+    if (normalizedSteps.length === 1) {
+        return `<p class="mb-3">${normalizedSteps[0]}</p>`;
+    }
+
+    return normalizedSteps.map((text, index) => {
+        const stepNumber = index + 1;
+        return `
+            <p class="mb-3">
+                <span class="font-semibold text-gray-800">${stepNumber}.</span> ${text}
+            </p>
+        `;
+    }).join('');
 }
 
 const showRecipeDetails = (meal) => {
@@ -177,7 +263,7 @@ const showRecipeDetails = (meal) => {
             </div>
             
             <!-- Right Side: Content -->
-            <div class="lg:w-[58%] p-6 sm:p-8 lg:p-10 bg-white relative overflow-y-auto lg:max-h-[85vh]">
+            <div class="lg:w-[58%] p-6 sm:p-8 lg:p-10 bg-white relative overflow-y-auto max-h-[60vh] lg:max-h-[85vh]">
                 <div class="mb-8">
                     <span class="bg-orange-100 text-orange-600 text-[10px] font-extrabold uppercase tracking-[0.24em] px-3 py-1.5 rounded-full mb-3 inline-block">
                         ${meal.strCategory || 'Main Course'}
@@ -206,7 +292,7 @@ const showRecipeDetails = (meal) => {
                         Instructions
                     </h3>
                     <div class="text-gray-600 text-[15px] font-normal leading-7 space-y-3 pr-2">
-                        ${meal.strInstructions ? meal.strInstructions.split(/\r?\n/).filter(p => p.trim()).map(p => `<p class="mb-3">${p.trim()}</p>`).join('') : 'No instructions available.'}
+                        ${formatInstructions(meal.strInstructions)}
                     </div>
                 </div>
 
